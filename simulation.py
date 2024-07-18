@@ -30,7 +30,7 @@ def grav_forces(objects):
     return  forces
 
 
-def harm_osci_forces(objects, k=1):
+def harm_osci_forces(objects, k=0.001):
     # force due to potential of form k*x**2
     forces = []
     for o in objects:
@@ -40,12 +40,12 @@ def harm_osci_forces(objects, k=1):
     return forces
 
 
-def calc_forces(objects):
+def calc_forces(objects, oscillation=False):
     # Gravity
     forces = grav_forces(objects)
     
-    # harm osci for testing
-    forces = harm_osci_forces(objects)
+    if oscillation:
+        forces = harm_osci_forces(objects)
 
     return forces
 
